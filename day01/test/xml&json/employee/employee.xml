@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<employee id="001">
+    <name>张三</name>
+    <age>23</age>
+</employee>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<input type="button" value="jQuery ajax() GET请求" id="ajaxGetBtn"/><br>
+	<input type="button" value="jQuery ajax() POST请求" id="ajaxPostBtn"/><br>
+	<input type="button" value="jQuery get()请求" id="getBtn"/><br>
+	<input type="button" value="jQuery post()请求" id="postBtn"/><br>
+	<input type="button" value="jQuery getJSON()请求" id="getJSONBtn"/><br>
+</body>
+<!--引入jQuery 和 编写 js-->
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	$(function () {
+		//开始业务逻辑
+		$('#ajaxGetBtn').click(function () {
+			//最底层的一行函数
+			//参数：对象：
+			// 		type
+			// 			get/post
+			//		url
+			//		data
+			//			字符串
+			//			对象
+			//		success  成功时候调用
+			//		error	 失败的时候
+			$.ajax({
+				type: "GET",
+				url: "/ajax/test",
+//				data: "username=John&location=Boston",
+				data: {username: "John", location: "Boston"},
+				success: function(msg){
+					alert( "success Data Saved: " + msg );
+				},
+				error: function (msg) {
+					alert( "error Data Saved: " + msg );
+				}
+			});
+		});
+
+		$('#ajaxPostBtn').click(function () {
+			$.ajax({
+				type: "POST",
+				url: "/ajax/test",
+//				data: "username=John&location=Boston",
+				data: {username: "John", location: "Boston"},
+				success: function(msg){
+					alert( "success Data Saved: " + msg );
+				},
+				error: function (msg) {
+					alert( "error Data Saved: " + msg );
+				}
+			});
+		});
+
+		$('#getBtn').click(function () {
+			var data = {username: "John", location: "Boston"};
+			//包装了 底层 $.ajax 函数
+			// url 数据 回调函数 返回的数据类型
+			$.get('/ajax/test', data, function (result) {
+				console.log(typeof result);
+				console.log(result);
+				var jsonObj = JSON.parse(result);
+				console.log(jsonObj);
+			}, 'json');
+		});
+
+		$('#postBtn').click(function () {
+			var data = {username: "John", location: "Boston"};
+			$.post('/ajax/test', data, function (result) {
+				console.log(typeof result);
+				console.log(result);
+			}, 'json');
+		});
+
+		$('#getJSONBtn').click(function () {
+			var data = {username: "John", location: "Boston"};
+			//包装了 底层 $.get 函数 默认就是处理 json
+			// url 数据 回调函数
+			$.getJSON('/ajax/test', data, function (result) {
+				console.log(typeof result);
+				console.log(result);
+			});
+		});
+	});
+</script>
+
+
+</html>

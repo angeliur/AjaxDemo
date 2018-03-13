@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<employees>
+    <employee id="001">
+        <name>张三</name>
+        <age>23</age>
+        <type>组长</type>
+    </employee>
+    <employee id="003">
+        <name>张四</name>
+        <age>25</age>
+        <type>组员</type>
+    </employee>
+    <employee id="002">
+        <name>张五</name>
+        <age>24</age>
+        <type>组员</type>
+    </employee>
+</employees>
+
+        <!--    项目小组3个人
+            组长: 张三, 25岁, 员工号为007
+            组员: 李四,  23岁, 员工号为008
+            组员: 王五,  22岁, 员工号为010-->
